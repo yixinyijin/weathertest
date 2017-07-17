@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname value = "weatherDb"/>
+    <version value = "1"/>
+    <list>
+        <mapping class = "wanghaokang.android.gdei.weathertest.db.Province"></mapping>
+        <mapping class = "wanghaokang.android.gdei.weathertest.db.City"></mapping>
+        <mapping class = "wanghaokang.android.gdei.weathertest.db.County"></mapping>
+    </list>
+</litepal>
