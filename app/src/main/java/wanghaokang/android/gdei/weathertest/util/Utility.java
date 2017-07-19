@@ -2,6 +2,8 @@ package wanghaokang.android.gdei.weathertest.util;
 
 import android.text.TextUtils;
 
+import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -9,6 +11,7 @@ import org.json.JSONObject;
 import wanghaokang.android.gdei.weathertest.db.City;
 import wanghaokang.android.gdei.weathertest.db.County;
 import wanghaokang.android.gdei.weathertest.db.Province;
+import wanghaokang.android.gdei.weathertest.gson.Weather;
 
 /**
  * Created by yixinyijin on 2017/7/17.
@@ -84,4 +87,21 @@ public class Utility {
         }
         return false;
     }
+
+    /*
+     *返回的JSON数据解析成Weather实体类
+     */
+
+    public static Weather handleWeatherResponse(String response) {
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray jsonArray = jsonObject.getJSONArray("HeWeather");
+            String weatherContent = jsonArray.getJSONObject(0).toString();
+            return new Gson().fromJson(weatherContent, Weather.class);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
